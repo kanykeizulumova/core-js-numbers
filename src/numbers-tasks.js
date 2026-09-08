@@ -244,8 +244,8 @@ function toNumber(value, def) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -261,8 +261,20 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index <= 0) return 0;
+  if (index === 1) return 1;
+
+  let prev = 0;
+  let current = 1;
+
+  for (let i = 2; i <= index; i += 1) {
+    const next = prev + current;
+    prev = current;
+    current = next;
+  }
+
+  return current;
 }
 
 /**
@@ -276,8 +288,15 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let sum = 0;
+  if (n === 1) {
+    return 1;
+  }
+  for (let index = 1; index <= n; index += 1) {
+    sum += index;
+  }
+  return sum;
 }
 
 /**
@@ -291,8 +310,13 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  const array = Array.from(String(num), Number);
+  let sum = 0;
+  for (let index = 0; index < array.length; index += 1) {
+    sum += array[index];
+  }
+  return sum;
 }
 
 /**
@@ -364,8 +388,8 @@ function toExponential(/* number, fractionDigits */) {
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toFixed(number, fractionDigits) {
+  return number.toFixed(fractionDigits);
 }
 
 /**
@@ -565,8 +589,8 @@ function getSumOfNumbers(/* x1, x2, x3 */) {
  * -5, -6 => -5
  * 0, 5   => 5
  */
-function getMaxNumber(/* firstNumber, secondNumber */) {
-  throw new Error('Not implemented');
+function getMaxNumber(firstNumber, secondNumber) {
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
